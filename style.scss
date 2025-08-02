@@ -1,0 +1,159 @@
+:root {
+  --font-main: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --color-bg: #f4f4f4;
+  --color-surface: #ffffff;
+  --color-text: #333333;
+  --color-border: #cccccc;
+  --color-primary: #007bff;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-main);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+}
+
+.scryfall {
+  display: flex;
+  justify-content: center;
+  padding: 2rem;
+  height: 100vh;
+  box-sizing: border-box;
+
+  &__content {
+    display: flex;
+    gap: 2rem;
+    width: 100%;
+    max-width: 1200px;
+  }
+
+  &__column {
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 1rem;
+    flex: 1;
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+
+  &__textarea {
+    border-radius: 4px;
+    border: 1px solid var(--color-border);
+    padding: 0.5rem;
+    font-family: inherit;
+    font-size: 1rem;
+    width: 100%;
+    min-height: 200px;
+    box-sizing: border-box;
+    resize: vertical;
+  }
+
+  &__button {
+    cursor: pointer;
+    background-color: var(--color-primary);
+    color: white;
+    border: none;
+    padding: .75rem 1rem;
+    border-radius: 4px;
+    transition: background-color .2s ease-in-out, opacity .2s ease-in-out;
+    font-size: 1rem;
+    
+    &:hover {
+      background-color: darken(#007bff, 10%);
+    }
+
+    &:disabled {
+      opacity: 0.6;
+      cursor: wait;
+    }
+    
+    &--copy {
+      background-color: #6c757d;
+      
+      &:hover {
+        background-color: darken(#6c757d, 10%);
+      }
+    }
+    
+    &--copied::after {
+      content: 'Copié !';
+    }
+    &--copied span {
+      display: none;
+    }
+  }
+
+  &__results {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    padding: 1rem;
+    height: 100%;
+    overflow-y: auto;
+    
+    &::before {
+      display: none;
+      font-style: italic;
+      color: #666;
+    }
+
+    &--loading::before {
+      display: block;
+      content: 'Chargement des cartes...';
+    }
+    &--empty::before {
+      display: block;
+      content: 'Aucune carte trouvée. Vérifiez votre liste ou entrez des cartes.';
+    }
+    &--error::before {
+      display: block;
+      content: 'Une erreur est survenue.';
+      color: red;
+    }
+  }
+}
+
+.card {
+  padding: 0.75rem;
+  border-bottom: 1px solid var(--color-border);
+  &:last-child {
+    border-bottom: none;
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+  }
+  
+  &__type-line {
+    font-size: 0.9rem;
+    font-style: italic;
+    margin: 0.25rem 0;
+  }
+
+  &__oracle-text {
+    font-size: 0.95rem;
+    p { margin: 0.5rem 0; }
+  }
+
+  &__flavor-text {
+    font-style: italic;
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+    color: #555;
+  }
+  
+  &__pt {
+    text-align: right;
+    font-weight: bold;
+  }
+}

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+    <body>
+        <div class="scryfall">
+            <div class="scryfall__content">
+                <div class="scryfall__column">
+                    <h2>Decklist</h2>
+                    <textarea id="text-area" class="scryfall__textarea" placeholder="Ex: &#10;4 Sol Ring&#10;1 Black Lotus"></textarea>
+                    <button id="fetch-button" class="scryfall__button scryfall__button--fetch">
+                        <span>Formatter la liste</span>
+                    </button>
+                </div>
+                <div class="scryfall__column">
+                    <div class="scryfall__header">
+                        <h2>Résultats</h2>
+                        <button id="copy-button" class="scryfall__button scryfall__button--copy">
+                            <span>Copier le texte</span>
+                        </button>
+                    </div>
+                    <div id="results-container" class="scryfall__results"></div>
+                </div>
+            </div>
+        </div>
+        <script src="scrypt.js"></script>
+    </body>
+</html>
